@@ -8,7 +8,7 @@ The backend is well-structured with separate controllers and routes. There's als
 
 I've included a web-based demo using plain HTML, CSS, and JavaScript to demonstrate how the API works.
 
-![Screenshot](https://imgur.com/a/xG6B8IT)
+![Screenshot](https://i.imgur.com/fVkS5Jz.png)
 
 ### Environment Variables
 
