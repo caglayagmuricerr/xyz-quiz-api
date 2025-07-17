@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XYZ Quiz API - Interactive Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🧠 XYZ Quiz API</h1>
+      <p class="subtitle">
+        Interactive demonstration of all available API endpoints
+      </p>
+
+      <div class="routes-grid">
+        <div class="route-card">
+          <div class="route-title">Get All Questions</div>
+          <span class="route-method get">GET</span>
+          <div class="route-endpoint">/api/questions</div>
+          <div class="route-description">
+            Retrieves all questions from the database (without answers). Each
+            question includes the timeLimit field (60 seconds by default).
+          </div>
+          <button class="btn" onclick="testRoute('/api/questions', 'GET')">
+            Test Route
+          </button>
+        </div>
+
+        <div class="route-card">
+          <div class="route-title">Get Random Question</div>
+          <span class="route-method get">GET</span>
+          <div class="route-endpoint">/api/question/random</div>
+          <div class="route-description">
+            Gets a random question with optional filtering by categories and
+            exclusion of recent questions. Includes 1-minute time limit for
+            answering.
+          </div>
+          <button
+            class="btn"
+            onclick="testRoute('/api/question/random', 'GET')"
+          >
+            Test Route
+          </button>
+        </div>
+
+        <div class="route-card">
+          <div class="route-title">Get Categories</div>
+          <span class="route-method get">GET</span>
+          <div class="route-endpoint">/api/questions/categories</div>
+          <div class="route-description">
+            Returns all available question categories from the database.
+          </div>
+          <button
+            class="btn"
+            onclick="testRoute('/api/questions/categories', 'GET')"
+          >
+            Test Route
+          </button>
+        </div>
+
+        <div class="route-card">
+          <div class="route-title">Random Question by Category</div>
+          <span class="route-method get">GET</span>
+          <div class="route-endpoint">/api/question/random?categories=...</div>
+          <div class="route-description">
+            Gets a random question from a randomly selected category.
+            Demonstrates the category filtering functionality of the random
+            question endpoint.
+          </div>
+          <button class="btn" onclick="testRandomQuestionByCategory()">
+            Test Route
+          </button>
+        </div>
+
+        <div class="route-card">
+          <div class="route-title">Check Answer</div>
+          <span class="route-method post">POST</span>
+          <div class="route-endpoint">/api/answer</div>
+          <div class="route-description">
+            Validates a submitted answer for a specific question. Requires
+            questionId and selectedOption in the request body.
+          </div>
+          <button class="btn" onclick="testCheckAnswer()">Test Route</button>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <div class="response-title">📡 API Response</div>
+        <div class="response-content" id="responseContent">
+          Click any "Test Route" button above to see the API response here...
+        </div>
+      </div>
+
+      <div class="quiz-section">
+        <div class="quiz-title">🎯 Interactive Quiz Demo</div>
+        <div id="quizContainer">
+          <p class="loading">
+            Click "Start Quiz" to begin a timed quiz experience!
+          </p>
+          <div class="quiz-controls">
+            <button class="btn" onclick="startQuiz()" style="max-width: 200px">
+              Start Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

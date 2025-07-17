@@ -1,0 +1,97 @@
+[
+  {
+    "question": "What does 'grep' command do in Linux?",
+    "options": [
+      "Copy files",
+      "Search text patterns",
+      "Remove files",
+      "Change permissions"
+    ],
+    "answer": "Search text patterns",
+    "category": "Linux Commands",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which command shows the current working directory?",
+    "options": ["pwd", "cwd", "dir", "where"],
+    "answer": "pwd",
+    "category": "Linux Commands",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How do you give execute permission to a file for the owner in Linux?",
+    "options": [
+      "chmod +x filename",
+      "chmod 755 filename",
+      "chmod u+x filename",
+      "All of the above"
+    ],
+    "answer": "All of the above",
+    "category": "Linux Commands",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Which of the following is NOT a JavaScript data type?",
+    "options": ["undefined", "number", "boolean", "float"],
+    "answer": "float",
+    "category": "JavaScript",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What does '===' operator do in JavaScript?",
+    "options": [
+      "Assigns value",
+      "Compares value only",
+      "Compares value and type",
+      "Compares type only"
+    ],
+    "answer": "Compares value and type",
+    "category": "JavaScript",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which method is used to add an element to the end of an array in JavaScript?",
+    "options": ["push()", "add()", "append()", "insert()"],
+    "answer": "push()",
+    "category": "JavaScript",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What does 'git clone' command do?",
+    "options": [
+      "Creates a new repository",
+      "Copies a repository to local machine",
+      "Deletes a repository",
+      "Updates a repository"
+    ],
+    "answer": "Copies a repository to local machine",
+    "category": "Git",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Which Linux command is used to display the manual page for a command?",
+    "options": ["help", "manual", "man", "info"],
+    "answer": "man",
+    "category": "Linux Commands",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What does the 'ps' command show in Linux?",
+    "options": [
+      "Disk space",
+      "Running processes",
+      "Network connections",
+      "System time"
+    ],
+    "answer": "Running processes",
+    "category": "Linux Commands",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Which command is used to kill a process in Linux?",
+    "options": ["stop", "end", "kill", "terminate"],
+    "answer": "kill",
+    "category": "Linux Commands",
+    "difficulty": "medium"
+  }
+]

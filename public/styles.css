@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2.5em;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 1.2em;
+}
+
+.routes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.route-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #667eea;
+  transition: transform 0.3s ease;
+}
+
+.route-card:hover {
+  transform: translateY(-5px);
+}
+
+.route-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.route-method {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.get {
+  background: #e8f5e8;
+  color: #2d8f2d;
+}
+.post {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.route-endpoint {
+  font-family: "Courier New", monospace;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+.route-description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.response-area {
+  margin-top: 40px;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.response-title {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.response-content {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+  max-height: 400px;
+  overflow-y: auto;
+  min-height: 100px;
+}
+
+.quiz-section {
+  margin-top: 40px;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-title {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.question-container {
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.options-container {
+  margin-bottom: 20px;
+}
+
+.option {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background: #e9ecef;
+  border-color: #667eea;
+}
+
+.option.selected {
+  background: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.timer {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #f44336;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.quiz-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.result.correct {
+  background: #e8f5e8;
+  color: #2d8f2d;
+}
+
+.result.incorrect {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --watch --trace-warnings --env-file=.env server.js",
+    "seed": "node --env-file=.env scripts/seedDatabase.js"
+  },
+  "author": "çağla yağmur içer",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3"
+  }
+}
