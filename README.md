@@ -263,7 +263,176 @@ Validates the answer user submitted.
 
 ### Test Scenarios
 
-... todo
+#### Question Routes Tests
+
+##### `GET /api/questions`
+
+**Test Case 1: Successful retrieval of all questions**
+
+- **Scenario**: Request all questions from populated database
+- **Expected**: 200 status, array of questions without answer field
+- **Verification**: Check that response is array, contains question structure, no answer field present
+
+**Test Case 2: Empty database**
+
+- **Scenario**: Request all questions from empty database
+- **Expected**: 200 status, empty array `[]`
+
+**Test Case 3: Database connection error**
+
+- **Scenario**: Database is unavailable
+- **Expected**: 500 status, error message
+
+##### `GET /api/question/random`
+
+**Test Case 1: Get random question without filters**
+
+- **Scenario**: Request random question with no query parameters
+- **Expected**: 200 status, single question object without answer field
+- **Verification**: Response contains \_id, question, options, category, difficulty, timeLimit
+
+**Test Case 2: Filter by single category**
+
+- **Scenario**: `GET /api/question/random?categories=JavaScript`
+- **Expected**: 200 status, question from JavaScript category only
+- **Verification**: Returned question.category === "JavaScript"
+
+**Test Case 3: Filter by multiple categories**
+
+- **Scenario**: `GET /api/question/random?categories=JavaScript,Git,Linux Commands`
+- **Expected**: 200 status, question from one of specified categories
+- **Verification**: Returned question.category is in the requested categories
+
+**Test Case 4: Exclude specific question IDs**
+
+- **Scenario**: `GET /api/question/random?excludeIds=64a1b2c3d4e5f6,64a1b2c3d4e5f7`
+- **Expected**: 200 status, question not in exclude list
+- **Verification**: Returned question.\_id not in excludeIds array
+
+**Test Case 5: Combine filters**
+
+- **Scenario**: `GET /api/question/random?categories=JavaScript&excludeIds=64a1b2c3d4e5f6`
+- **Expected**: 200 status, JavaScript question not in exclude list
+
+**Test Case 6: No questions match filters**
+
+- **Scenario**: Request with category that doesn't exist
+- **Expected**: 404 status, "No questions found" message
+
+**Test Case 7: All questions excluded**
+
+- **Scenario**: Exclude all question IDs in a category
+- **Expected**: 200 status, reset filter and return question from that category
+- **Verification**: Should fallback and return any question from the category
+
+**Test Case 8: Invalid category filter**
+
+- **Scenario**: Request with non-existent category
+- **Expected**: 404 status, "No questions found" message
+
+##### `GET /api/questions/categories`
+
+**Test Case 1: Get all categories**
+
+- **Scenario**: Request all available categories
+- **Expected**: 200 status, array of unique category strings
+- **Verification**: Array contains expected categories like ["JavaScript", "Git", "Linux Commands"]
+
+#### Answer Routes Tests
+
+##### `POST /api/answer`
+
+**Test Case 1: Correct answer submission**
+
+- **Scenario**: Submit correct answer for a question
+- **Request Body**:
+  ```json
+  {
+    "questionId": "valid-question-id",
+    "selectedOption": "correct-answer"
+  }
+  ```
+- **Expected**: 200 status, `{ "isCorrect": true, "correctAnswer": "correct-answer" }`
+
+**Test Case 2: Incorrect answer submission**
+
+- **Scenario**: Submit wrong answer for a question
+- **Request Body**:
+  ```json
+  {
+    "questionId": "valid-question-id",
+    "selectedOption": "wrong-answer"
+  }
+  ```
+- **Expected**: 200 status, `{ "isCorrect": false, "correctAnswer": "actual-correct-answer" }`
+
+**Test Case 3: Missing questionId**
+
+- **Scenario**: Submit answer without questionId
+- **Request Body**:
+  ```json
+  {
+    "selectedOption": "some-answer"
+  }
+  ```
+- **Expected**: 400 status, "questionId and selectedOption are required" message
+
+**Test Case 4: Missing selectedOption**
+
+- **Scenario**: Submit without selectedOption
+- **Request Body**:
+  ```json
+  {
+    "questionId": "valid-question-id"
+  }
+  ```
+- **Expected**: 400 status, "questionId and selectedOption are required" message
+
+**Test Case 5: Empty request body**
+
+- **Scenario**: Submit POST request with empty body
+- **Request Body**: `{}`
+- **Expected**: 400 status, "questionId and selectedOption are required" message
+
+**Test Case 6: Invalid questionId**
+
+- **Scenario**: Submit answer for non-existent question
+- **Request Body**:
+  ```json
+  {
+    "questionId": "64a1b2c3d4e5f9",
+    "selectedOption": "some-answer"
+  }
+  ```
+- **Expected**: 404 status, "Question not found" message
+
+**Test Case 7: selectedOption is null**
+
+- **Scenario**: Submit null as selectedOption
+- **Request Body**:
+  ```json
+  {
+    "questionId": "valid-question-id",
+    "selectedOption": null
+  }
+  ```
+- **Expected**: 400 status (since selectedOption === undefined check)
+
+**Test Case 8: selectedOption is empty string**
+
+- **Scenario**: Submit empty string as answer
+- **Request Body**:
+  ```json
+  {
+    "questionId": "valid-question-id",
+    "selectedOption": ""
+  }
+  ```
+- **Expected**: 200 status, should process normally (empty string is valid. its just the wrong answer)
+
+### Postman Tests
+
+https://www.postman.com/joint-operations-geoscientist-18058594/workspace/xyz/collection/28718637-2a63febf-0314-4283-86c8-0fa54f843bc3?action=share&creator=28718637
 
 ## License
 

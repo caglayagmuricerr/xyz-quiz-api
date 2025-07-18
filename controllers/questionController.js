@@ -31,19 +31,18 @@ exports.getRandomQuestion = async (req, res) => {
     const count = await Question.countDocuments(filter);
     if (count === 0) {
       // if no questions available after excluding recent ones, reset and try again
-      if (excludeIds) {
-        const resetFilter = categories ? { category: filter.category } : {};
-        const resetCount = await Question.countDocuments(resetFilter);
-        if (resetCount === 0) {
-          return res.status(404).json({ message: "No questions found" });
-        }
-        const randomIndex = Math.floor(Math.random() * resetCount);
-        const question = await Question.findOne(resetFilter)
-          .skip(randomIndex)
-          .select("-answer");
-        return res.status(200).json(question);
+      const newFilter = categories ? { category: filter.category } : {};
+      const newCount = await Question.countDocuments(newFilter);
+      if (newCount === 0) {
+        return res
+          .status(404)
+          .json({ message: "No questions found or categories don't exist" });
       }
-      return res.status(404).json({ message: "No questions found" });
+      const randomIndex = Math.floor(Math.random() * newCount);
+      const question = await Question.findOne(newFilter)
+        .skip(randomIndex)
+        .select("-answer");
+      return res.status(200).json(question);
     }
 
     const randomIndex = Math.floor(Math.random() * count);
