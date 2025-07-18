@@ -1,5 +1,7 @@
 # Yazılım.xyz Quiz API - NodeJS
 
+[Github Link](https://github.com/caglayagmuricerr/xyz-quiz-api)
+
 A simple question API built with Node.js for my summer internship at Yazılım.xyz. This project provides RESTful endpoints to retrieve programming and Linux-related questions. These questions are stored in a MongoDB database using Mongoose ODM for data modeling.
 
 Multiple endpoints are available to retrieve all questions, retrieve random questions with optional category filtering and discarding of asked questions (7 questions), retrieve all question categories, and perform answer validation.
